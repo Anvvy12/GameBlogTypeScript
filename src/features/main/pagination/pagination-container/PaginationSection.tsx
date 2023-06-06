@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import PaginationPages from '../pagination-pages/PaginationPages';
+import getPaginationState from '../pagination.actions';
 import './pagination-container.scss';
 
-const PaginationSection: React.FC = () => {
+type PaginationSectionProps = ConnectedProps<typeof connector>;
+
+const PaginationSection: React.FC<PaginationSectionProps> = ({ getPagination }) => {
+  useEffect(() => {
+    getPagination();
+  }, []);
+
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const itemsPerPage = 5;
 
@@ -23,4 +31,11 @@ const PaginationSection: React.FC = () => {
   );
 };
 
-export default PaginationSection;
+const mapState = () => ({});
+const mapDispatch = {
+  getPagination: getPaginationState,
+};
+
+const connector = connect(mapState, mapDispatch);
+
+export default connector(PaginationSection);

@@ -1,6 +1,5 @@
 import { configureStore, Store, AnyAction } from '@reduxjs/toolkit';
 import paginationReducer from './features/main/pagination/pagination.reducer';
-
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 
 const store: Store = configureStore({

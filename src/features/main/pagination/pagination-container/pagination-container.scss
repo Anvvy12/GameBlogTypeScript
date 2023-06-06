@@ -1,0 +1,15 @@
+.pagination-section {
+  width: 85%;
+}
+
+.items-list {
+  display: flex;
+  justify-content: center;
+  &__item {
+    color: #fff;
+    width: 20%;
+    height: 100px;
+    background-color: red;
+    border: 1px solid black;
+  }
+}

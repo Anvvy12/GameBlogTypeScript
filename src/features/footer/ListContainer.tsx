@@ -10,7 +10,7 @@ const ListContainer: React.FC = () => {
     window.open('tg://resolve?domain=Anvvy', '_blank');
   };
 
-  const handleLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleLinkClick = (event: MouseEvent<HTMLAnchorElement>): void => {
     event.preventDefault();
     const { target, href } = event.currentTarget;
     window.open(href, target);
@@ -23,6 +23,7 @@ const ListContainer: React.FC = () => {
           <a
             className="links-list__item-link"
             target="_blank"
+            rel="noreferrer"
             href="https://www.linkedin.com/in/bogdan-roman-b498b924b/"
             onClick={handleLinkClick}
           >
@@ -30,7 +31,7 @@ const ListContainer: React.FC = () => {
           </a>
         </li>
         <li className="links-list__item">
-          <a className="links-list__item-link" onClick={handleTelegramClick}>
+          <a className="links-list__item-link" href="#" onClick={handleTelegramClick}>
             <TelegramIcon />
           </a>
         </li>
@@ -38,6 +39,7 @@ const ListContainer: React.FC = () => {
           <a
             className="links-list__item-link"
             target="_blank"
+            rel="noreferrer"
             href="https://github.com/Anvvy12"
             onClick={handleLinkClick}
           >
@@ -48,6 +50,7 @@ const ListContainer: React.FC = () => {
           <a
             className="links-list__item-link"
             target="_blank"
+            rel="noreferrer"
             href="https://djinni.co/q/4c8217d37b/"
             onClick={handleLinkClick}
           >
@@ -58,6 +61,7 @@ const ListContainer: React.FC = () => {
           <a
             className="links-list__item-link"
             target="_blank"
+            rel="noreferrer"
             href="mailto:romanbs.wo@gmail.com"
             onClick={handleLinkClick}
           >

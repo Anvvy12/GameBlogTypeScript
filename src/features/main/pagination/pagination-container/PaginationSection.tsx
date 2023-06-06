@@ -11,14 +11,8 @@ const PaginationSection: React.FC<PaginationSectionProps> = ({ getPagination }) 
     getPagination();
   }, []);
 
-  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  const itemsPerPage = 5;
-
-  const items2: object = {
-    1: [1, 2, 3, 4, 5],
-    2: [1, 2, 3, 4, 5],
-    3: [1, 2, 3, 4, 5],
-  };
+  const items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const itemsPerPage: number = 5;
 
   const [currentPage, setCurrentPage] = useState(1);
 

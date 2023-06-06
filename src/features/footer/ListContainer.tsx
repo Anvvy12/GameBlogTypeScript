@@ -31,9 +31,9 @@ const ListContainer: React.FC = () => {
           </a>
         </li>
         <li className="links-list__item">
-          <a className="links-list__item-link" href="#" onClick={handleTelegramClick}>
+          <div className="links-list__item-link" onClick={handleTelegramClick}>
             <TelegramIcon />
-          </a>
+          </div>
         </li>
         <li className="links-list__item">
           <a

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import PaginationPages from '../pagination-pages/PaginationPages';
 import getPaginationState from '../pagination.actions';
@@ -11,22 +11,28 @@ const PaginationSection: React.FC<PaginationSectionProps> = ({ getPagination }) 
     getPagination();
   }, []);
 
-  const items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  const itemsPerPage: number = 5;
+  const itemsBig: number[] = [1, 2, 3, 4, 5, 6];
+  const itemsSmall: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const itemsPerPageBig: number = 2;
+  const itemsPerPageSmall: number = 3;
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  const renderItems = (items: number[], itemsPerPage: number) => {
+    return items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
+      <li
+        className={`items-list__item ${itemsPerPage === 2 ? 'first-row' : 'second-row'}`}
+        key={item}
+      >
+        <span className="item-text">Item {item}</span>
+      </li>
+    ));
+  };
+
   return (
     <section className="pagination-section">
-      <ul className="items-list">
-        {items
-          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-          .map((item, index) => (
-            <li className={`items-list__item ${index < 2 ? 'first-row' : 'second-row'}`} key={item}>
-              <span className="item-text">Item {item}</span>
-            </li>
-          ))}
-      </ul>
+      <ul className="items-list">{renderItems(itemsBig, itemsPerPageBig)}</ul>
+      <ul className="items-list">{renderItems(itemsSmall, itemsPerPageSmall)}</ul>
 
       <PaginationPages currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </section>

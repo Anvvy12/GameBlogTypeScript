@@ -31,8 +31,10 @@ const PaginationSection: React.FC<PaginationSectionProps> = ({ getPagination }) 
 
   return (
     <section className="pagination-section">
-      <ul className="items-list">{renderItems(itemsBig, itemsPerPageBig)}</ul>
-      <ul className="items-list">{renderItems(itemsSmall, itemsPerPageSmall)}</ul>
+      <div className="list-container">
+        <ul className="items-list">{renderItems(itemsBig, itemsPerPageBig)}</ul>
+        <ul className="items-list">{renderItems(itemsSmall, itemsPerPageSmall)}</ul>
+      </div>
 
       <PaginationPages currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </section>

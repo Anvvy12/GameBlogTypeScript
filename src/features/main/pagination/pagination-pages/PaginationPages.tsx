@@ -1,35 +1,42 @@
 import React from 'react';
 import './pagination-pages.scss';
 
-type PaginationPagesTypes = {
+type PaginationPagesProps = {
   currentPage: number;
-  setCurrentPage: (number: number) => void;
+  setCurrentPage: (currentPage: number) => void;
 };
 
-const PaginationPages: React.FC<PaginationPagesTypes> = ({ currentPage, setCurrentPage }) => {
-  const pageNumbers: JSX.Element[] = [];
-
-  const handleClick = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-
-  for (let i = 1; i <= 3; i++) {
-    pageNumbers.push(
-      <li
-        key={i}
-        className={currentPage === i ? 'active pages-list__item' : 'pages-list__item'}
-        onClick={() => handleClick(i)}
-      >
-        <span className="page-number">{i}</span>
-      </li>,
+const PaginationPages: React.FC<PaginationPagesProps> = React.memo(
+  ({ currentPage, setCurrentPage }) => {
+    const handleClick = React.useCallback(
+      (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+      },
+      [setCurrentPage],
     );
-  }
 
-  return (
-    <div className="pages-container">
-      <ul className="pages-list">{pageNumbers}</ul>
-    </div>
-  );
-};
+    const pageNumbers = React.useMemo(() => {
+      return Array.from({ length: 3 }, (_, index) => index + 1);
+    }, []);
+
+    return (
+      <div className="pages-container">
+        <ul className="pages-list">
+          {pageNumbers.map(pageNumber => (
+            <li
+              key={pageNumber}
+              className={
+                currentPage === pageNumber ? 'active pages-list__item' : 'pages-list__item'
+              }
+              onClick={() => handleClick(pageNumber)}
+            >
+              <span className="page-number">{pageNumber}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  },
+);
 
 export default PaginationPages;

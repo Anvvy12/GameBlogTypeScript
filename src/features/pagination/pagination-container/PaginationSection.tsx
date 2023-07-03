@@ -14,8 +14,6 @@ const PaginationSection: React.FC<PaginationSectionProps> = ({ getPagination }) 
 
   const itemsBig: number[] = [1, 2, 3, 4, 5, 6];
   const itemsSmall: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const itemsPerPageBig: number = 2;
-  const itemsPerPageSmall: number = 3;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,18 +21,10 @@ const PaginationSection: React.FC<PaginationSectionProps> = ({ getPagination }) 
     <section className="pagination-section">
       <div className="list-container">
         <ul className="items-list">
-          <PaginationCard
-            items={itemsBig}
-            itemsPerPage={itemsPerPageBig}
-            currentPage={currentPage}
-          />
+          <PaginationCard items={itemsBig} itemsPerPage={2} currentPage={currentPage} />
         </ul>
         <ul className="items-list">
-          <PaginationCard
-            items={itemsSmall}
-            itemsPerPage={itemsPerPageSmall}
-            currentPage={currentPage}
-          />
+          <PaginationCard items={itemsSmall} itemsPerPage={3} currentPage={currentPage} />
         </ul>
       </div>
 

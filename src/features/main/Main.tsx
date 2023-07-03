@@ -1,4 +1,4 @@
-import PaginationSection from './pagination/pagination-container/PaginationSection';
+import PaginationSection from '../pagination/pagination-container/PaginationSection';
 import './main.scss';
 interface MainInterface {}
 

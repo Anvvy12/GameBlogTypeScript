@@ -15,9 +15,7 @@ const PaginationPages: React.FC<PaginationPagesProps> = React.memo(
       [setCurrentPage],
     );
 
-    const pageNumbers = React.useMemo(() => {
-      return Array.from({ length: 3 }, (_, index) => index + 1);
-    }, []);
+    const pageNumbers: number[] = [1, 2, 3];
 
     return (
       <div className="pages-container">
